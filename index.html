@@ -3,6 +3,7 @@
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 /* Layout: same language as the Munich page (red poster hero, white paper, black rules), cut into short blocks: clock, four lanes to pick from, a small map. Single light look on purpose. */
 :root{
@@ -257,4 +258,14 @@ footer ul{margin:8px 0 0 18px}
     </ul></details>
   </div>
 </footer>
-
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+if(!window.L)return;
+var P=[["13","Meet: Vie de France",35.69857,139.77366,"m"],["\u2605","Akihabara Station",35.69839,139.77426,"s"],["A","K-BOOKS (figures)",35.69789,139.77194],["B","GiGO (games)",35.69900,139.77081],["C","G-Store (clothing)",35.69829,139.77092],["D","Maidreamin",35.69802,139.77246]];
+var m=L.map("lmap",{scrollWheelZoom:false});
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap contributors"}).addTo(m);
+var pts=P.map(function(p){L.marker([p[2],p[3]],{title:p[1],icon:L.divIcon({className:"",html:'<div class="pin '+(p[4]||"")+'">'+p[0]+"</div>",iconSize:[32,32],iconAnchor:[16,16]})}).addTo(m).bindTooltip(p[1]);return[p[2],p[3]]});
+m.fitBounds(pts,{padding:[40,40]});
+})();
+</script>
