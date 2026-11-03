@@ -69,6 +69,8 @@ section{padding-block:44px;border-top:1px solid var(--ink)}
 /* map */
 .map{margin-top:20px;border-radius:6px;overflow:hidden;background:var(--paper)}
 #lmap{height:420px}
+.nm{font:700 13px Inter,sans-serif;color:#1a1a1a;background:#fff;border:0;border-radius:4px;padding:2px 6px;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.nm:before{display:none}
 .pin{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;font:900 15px Inter,sans-serif;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45)}
 .pin.m{background:#1a1a1a;width:36px;height:36px;font-size:13px}
 .pin.s{background:#fff;color:#1a1a1a;border-color:#1a1a1a;font-size:18px}
@@ -264,8 +266,8 @@ footer ul{margin:8px 0 0 18px}
 if(!window.L)return;
 var P=[["13","Meet: Vie de France",35.69857,139.77366,"m"],["\u2605","Akihabara Station",35.69839,139.77426,"s"],["A","K-BOOKS (figures)",35.69789,139.77194],["B","GiGO (games)",35.69900,139.77081],["C","G-Store (clothing)",35.69829,139.77092],["D","Maidreamin",35.69802,139.77246]];
 var m=L.map("lmap",{scrollWheelZoom:false});
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap contributors"}).addTo(m);
-var pts=P.map(function(p){L.marker([p[2],p[3]],{title:p[1],icon:L.divIcon({className:"",html:'<div class="pin '+(p[4]||"")+'">'+p[0]+"</div>",iconSize:[32,32],iconAnchor:[16,16]})}).addTo(m).bindTooltip(p[1]);return[p[2],p[3]]});
-m.fitBounds(pts,{padding:[40,40]});
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",{maxZoom:19,subdomains:"abcd",attribution:"&copy; OpenStreetMap contributors &copy; CARTO"}).addTo(m);
+var pts=P.map(function(p){L.marker([p[2],p[3]],{title:p[1],icon:L.divIcon({className:"",html:'<div class="pin '+(p[4]||"")+'">'+p[0]+"</div>",iconSize:[32,32],iconAnchor:[16,16]})}).addTo(m).bindTooltip(p[1],{permanent:true,direction:"right",offset:[16,0],className:"nm"});return[p[2],p[3]]});
+m.fitBounds(pts,{padding:[50,90]});
 })();
 </script>
