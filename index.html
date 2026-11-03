@@ -266,7 +266,7 @@ footer ul{margin:8px 0 0 18px}
 if(!window.L)return;
 var P=[["13","Meet: Vie de France",35.69857,139.77366,"m"],["\u2605","Akihabara Station",35.69839,139.77426,"s"],["A","K-BOOKS (figures)",35.69789,139.77194],["B","GiGO (games)",35.69900,139.77081],["C","G-Store (clothing)",35.69829,139.77092],["D","Maidreamin",35.69802,139.77246]];
 var m=L.map("lmap",{scrollWheelZoom:false});
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",{maxZoom:19,subdomains:"abcd",attribution:"&copy; OpenStreetMap contributors &copy; CARTO"}).addTo(m);
+L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",{maxNativeZoom:16,maxZoom:18,attribution:"Tiles &copy; Esri"}).addTo(m);
 var pts=P.map(function(p){L.marker([p[2],p[3]],{title:p[1],icon:L.divIcon({className:"",html:'<div class="pin '+(p[4]||"")+'">'+p[0]+"</div>",iconSize:[32,32],iconAnchor:[16,16]})}).addTo(m).bindTooltip(p[1],{permanent:true,direction:"right",offset:[16,0],className:"nm"});return[p[2],p[3]]});
 m.fitBounds(pts,{padding:[50,90]});
 })();
