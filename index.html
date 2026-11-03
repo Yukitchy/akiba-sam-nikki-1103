@@ -208,7 +208,7 @@ footer ul{margin:8px 0 0 18px}
       <p class="eyebrow">Where things are</p>
       <h2>All close to the station</h2>
       <div class="map"><div id="lmap" role="img" aria-label="Map of Akihabara showing the meeting point, Akihabara station and the four stops"></div></div>
-      <ul class="key"><li><i>13</i>Meet here: Vie de France</li><li><i>A</i>Figures and goods</li><li><i>B</i>Games</li><li><i>C</i>Anime clothing</li><li><i>D</i>Maid café</li></ul>
+      <ul class="key"><li><i>13</i>Meet here: <a href="https://goo.gl/maps/Huav4R4hyZFYWkUG6" target="_blank" rel="noopener">Vie de France (Google Maps)</a></li><li><i>A</i>Figures and goods</li><li><i>B</i>Games</li><li><i>C</i>Anime clothing</li><li><i>D</i>Maid café</li></ul>
       <p class="legend"><span>The other shops are a few minutes' walk from these. Yuuki knows the way, so no need to follow the map.</span></p>
     </div>
   </section>
@@ -264,7 +264,7 @@ footer ul{margin:8px 0 0 18px}
 <script>
 (function(){
 if(!window.L)return;
-var P=[["13","Meet: Vie de France",35.69857,139.77366,"m"],["\u2605","Akihabara Station",35.69839,139.77426,"s"],["A","K-BOOKS (figures)",35.69789,139.77194],["B","GiGO (games)",35.69900,139.77081],["C","G-Store (clothing)",35.69829,139.77092],["D","Maidreamin",35.69802,139.77246]];
+var P=[["13","Meet: Vie de France",35.6987835,139.772352,"m"],["\u2605","Akihabara Station",35.69839,139.77426,"s"],["A","K-BOOKS (figures)",35.69789,139.77194],["B","GiGO (games)",35.69900,139.77081],["C","G-Store (clothing)",35.69829,139.77092],["D","Maidreamin",35.69802,139.77246]];
 var m=L.map("lmap",{scrollWheelZoom:false});
 L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",{maxNativeZoom:16,maxZoom:18,attribution:"Tiles &copy; Esri"}).addTo(m);
 var pts=P.map(function(p){L.marker([p[2],p[3]],{title:p[1],icon:L.divIcon({className:"",html:'<div class="pin '+(p[4]||"")+'">'+p[0]+"</div>",iconSize:[32,32],iconAnchor:[16,16]})}).addTo(m).bindTooltip(p[1],{permanent:true,direction:p[0]=="A"?"left":"right",offset:[p[0]=="A"?-16:16,0],className:"nm"});return[p[2],p[3]]});
