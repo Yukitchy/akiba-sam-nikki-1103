@@ -66,8 +66,14 @@ section{padding-block:44px;border-top:1px solid var(--ink)}
 
 
 /* map */
-.map{margin-top:20px;background:var(--paper);border-radius:6px;overflow-x:auto}
-.map svg{display:block;width:100%;min-width:320px;height:auto}
+.map{margin-top:20px;border-radius:6px;overflow:hidden;background:var(--paper)}
+#lmap{height:420px}
+.pin{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;font:900 15px Inter,sans-serif;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45)}
+.pin.m{background:#1a1a1a;width:36px;height:36px;font-size:13px}
+.pin.s{background:#fff;color:#1a1a1a;border-color:#1a1a1a;font-size:18px}
+.key{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:14px;font-weight:600;list-style:none;padding:0}
+.key i{font-style:normal;display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:900;margin-right:6px}
+@media(max-width:600px){#lmap{height:340px}}
 .legend{margin-top:12px;display:grid;gap:4px;font-size:14px}
 
 /* ways */
@@ -198,31 +204,8 @@ footer ul{margin:8px 0 0 18px}
     <div class="in">
       <p class="eyebrow">Where things are</p>
       <h2>All close to the station</h2>
-      <div class="map">
-        <svg viewBox="0 0 380 270" role="img" aria-label="Simple map: Vie de France, GiGO, G-Store and Maidreamin, all within about 200 metres of Akihabara station">
-          <rect x="275" y="110" width="80" height="135" rx="8" fill="#e6e6e6"/>
-          <text x="315" y="172" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="900" fill="#1a1a1a">Akihabara</text>
-          <text x="315" y="188" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="900" fill="#1a1a1a">Station</text>
-          <g stroke="#e5382b" stroke-width="2" stroke-dasharray="5 4" fill="none" opacity=".7">
-            <path d="M234 130 L106 84"/><path d="M234 130 L97 187"/><path d="M234 130 L230 210"/>
-          </g>
-          <g font-family="Inter,sans-serif" font-weight="900">
-            <circle cx="234" cy="130" r="13" fill="#1a1a1a"/><text x="234" y="134.5" text-anchor="middle" font-size="11" fill="#fff">13:00</text>
-            <text x="252" y="100" font-size="12" fill="#1a1a1a" text-anchor="middle">Vie de France</text>
-            <circle cx="106" cy="84" r="13" fill="#e5382b"/><text x="106" y="89" text-anchor="middle" font-size="14" fill="#fff">B</text>
-            <text x="106" y="62" font-size="12" fill="#1a1a1a" text-anchor="middle">GiGO</text>
-            <circle cx="97" cy="187" r="13" fill="#e5382b"/><text x="97" y="192" text-anchor="middle" font-size="14" fill="#fff">C</text>
-            <text x="97" y="216" font-size="12" fill="#1a1a1a" text-anchor="middle">G-Store</text>
-            <circle cx="230" cy="210" r="13" fill="#e5382b"/><text x="230" y="215" text-anchor="middle" font-size="14" fill="#fff">D</text>
-            <text x="230" y="240" font-size="12" fill="#1a1a1a" text-anchor="middle">Maidreamin</text>
-          </g>
-          <g font-family="Inter,sans-serif" font-size="11" fill="#5c5c5c">
-            <line x1="20" y1="252" x2="120" y2="252" stroke="#1a1a1a" stroke-width="3"/>
-            <text x="20" y="244">100 m, about 1 minute on foot</text>
-            <text x="20" y="22" font-weight="700">N ↑</text>
-          </g>
-        </svg>
-      </div>
+      <div class="map"><div id="lmap" role="img" aria-label="Map of Akihabara showing the meeting point, Akihabara station and the four stops"></div></div>
+      <ul class="key"><li><i>13</i>Meet here: Vie de France</li><li><i>A</i>Figures and goods</li><li><i>B</i>Games</li><li><i>C</i>Anime clothing</li><li><i>D</i>Maid café</li></ul>
       <p class="legend"><span>The other shops are a few minutes' walk from these. Yuuki knows the way, so no need to follow the map.</span></p>
     </div>
   </section>
